@@ -50,7 +50,7 @@ private CarList carList;
     @Test(expected = IndexOutOfBoundsException.class)
     public void whenIndexOutOfCollectionBoundsThenThrowException() {
         carList.removeAt(100);
-        //последний индекс 99, 100 элементов
+        //последний индекс 99, значит 100 элементов
     }
     @Test
     public void methodGetReturnedRightValue() {
