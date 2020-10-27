@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CarListTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-10-17T13:16:00" hostname="rrsee-MacBook-Pro.local" time="0.018">
+<testsuite name="CarListTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-10-24T11:54:26" hostname="rrsee-MacBook-Pro.local" time="0.02">
   <properties/>
-  <testcase name="whenAdded100ElementsThenSizeMustBe100" classname="CarListTest" time="0.014"/>
-  <testcase name="methodGetReturnedRightValue" classname="CarListTest" time="0.001"/>
-  <testcase name="whenElementRemovedByIndexThenSizeMustBeDecreased" classname="CarListTest" time="0.0"/>
-  <testcase name="whenListClearedThenSizeMustBe0" classname="CarListTest" time="0.0"/>
-  <testcase name="whenIndexOutOfCollectionBoundsThenThrowException" classname="CarListTest" time="0.001"/>
-  <testcase name="whenElementRemovedThenSizeMustBeDecreased" classname="CarListTest" time="0.001"/>
+  <testcase name="InsertIntoLastPosition" classname="CarListTest" time="0.015"/>
+  <testcase name="whenAdded100ElementsThenSizeMustBe100" classname="CarListTest" time="0.0"/>
+  <testcase name="methodGetReturnedRightValue" classname="CarListTest" time="0.0"/>
+  <testcase name="whenElementRemovedByIndexThenSizeMustBeDecreased" classname="CarListTest" time="0.001"/>
+  <testcase name="InsertIntoFirstPosition" classname="CarListTest" time="0.0"/>
+  <testcase name="whenListClearedThenSizeMustBe0" classname="CarListTest" time="0.001"/>
+  <testcase name="whenIndexOutOfCollectionBoundsThenThrowException" classname="CarListTest" time="0.0"/>
+  <testcase name="InsertIntoMiddle" classname="CarListTest" time="0.0"/>
+  <testcase name="whenElementRemovedThenSizeMustBeDecreased" classname="CarListTest" time="0.0"/>
   <testcase name="whenNonExistentElementRemovedThenReturnFalse" classname="CarListTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

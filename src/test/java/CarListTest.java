@@ -57,4 +57,28 @@ private CarList carList;
         Car car = carList.get(4);
         Assert.assertEquals("Brand4", car.getBrand());
     }
+
+    @Test
+    public void InsertIntoMiddle () {
+        Car car = new Car("BMW",1);
+        carList.add(car,50);
+        Car carFromList = carList.get(50);
+        Assert.assertEquals("BMW", carFromList.getBrand());
+    }
+
+    @Test
+    public void InsertIntoLastPosition () {
+        Car car = new Car("BMW",1);
+        carList.add(car,100);
+        Car carFromList = carList.get(100);
+        Assert.assertEquals("BMW", carFromList.getBrand());
+    }
+
+@Test
+public void InsertIntoFirstPosition () {
+        Car car = new Car("BMW",1);
+        carList.add(car,0);
+        Car carFromList = carList.get(0);
+        Assert.assertEquals("BMW", carFromList.getBrand());
+        }
 }
