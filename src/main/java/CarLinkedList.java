@@ -12,12 +12,12 @@ public class CarLinkedList implements CarList {
     @Override
     public void add(Car car) {
         if (size == 0) {
-            Node node = new Node(null,car,null);
+            Node node = new Node(null, car, null);
             first = node;
             last = node;
         } else {
             Node secondLast = last;
-            last = new Node(secondLast,car,null);
+            last = new Node(secondLast, car, null);
             secondLast.next = last;
         }
         size++;
@@ -25,7 +25,34 @@ public class CarLinkedList implements CarList {
 
     @Override
     public void add(Car car, int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        //вставляем в конец
+        if (index == size) {
+            add(car);
+            return;
+        }
+        //индекс в пределах коллекции, но не самый последний
+        //получаем ссылки на соседние элементы
+        Node nodeNext = getNode(index);
+        Node nodePrevious = nodeNext.previous;
+        Node newNode = new Node(nodePrevious, car, nodeNext);
+        nodeNext.previous = newNode;
+        if (nodePrevious != null) {
+            nodePrevious.next = newNode;
+        } else {
+            first = newNode;
+        }
+        size++;
+    }
 
+    private Node getNode(int index) {
+        Node node = first;
+        for (int i = 0; i < index; i++) {
+            node = node.next; //если бы обращаемся к индексу 1, тогда цикл выполнится 1 раз
+        }
+        return node;
     }
 
     @Override
