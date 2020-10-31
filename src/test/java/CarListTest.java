@@ -4,6 +4,7 @@ import org.junit.Test;
 
 public class CarListTest {
 private CarList carLinkedList;
+//эти тесты и для linkedlist и для arraylist
 
     @Before
     public void setUp() throws Exception {
