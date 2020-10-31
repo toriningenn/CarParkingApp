@@ -6,7 +6,7 @@ public class CarLinkedList implements CarList {
 
     @Override
     public Car get(int index) {
-        return null;
+        return getNode(index).value;
     }
 
     @Override
@@ -31,13 +31,13 @@ public class CarLinkedList implements CarList {
         //вставляем в конец
         if (index == size) {
             add(car);
-            return;
+            return; //выйти из метода void!!!
         }
         //индекс в пределах коллекции, но не самый последний
         //получаем ссылки на соседние элементы
-        Node nodeNext = getNode(index);
-        Node nodePrevious = nodeNext.previous;
-        Node newNode = new Node(nodePrevious, car, nodeNext);
+        Node nodeNext = getNode(index); //5
+        Node nodePrevious = nodeNext.previous; //4
+        Node newNode = new Node(nodePrevious, car, nodeNext); //создаём новый нод
         nodeNext.previous = newNode;
         if (nodePrevious != null) {
             nodePrevious.next = newNode;
@@ -47,7 +47,11 @@ public class CarLinkedList implements CarList {
         size++;
     }
 
+    //возвращает нод по индексу
     private Node getNode(int index) {
+        if (index < 0 || index >=size) {
+            throw new IndexOutOfBoundsException();
+        }
         Node node = first;
         for (int i = 0; i < index; i++) {
             node = node.next; //если бы обращаемся к индексу 1, тогда цикл выполнится 1 раз
@@ -57,12 +61,34 @@ public class CarLinkedList implements CarList {
 
     @Override
     public boolean remove(Car car) {
+        Node node = first;
+        for (int i = 0; i < size; i++) {
+            if(node.value.equals(car)) {
+                return removeAt(i);
+            }
+            node = node.next;
+        }
         return false;
     }
 
     @Override
     public boolean removeAt(int index) {
-        return false;
+        Node node = getNode(index);
+        Node nextNode = node.next;
+        Node previousNode = node.previous; // создаём, даже если null но добавляем проверку
+        if (nextNode != null) {
+            nextNode.previous = previousNode;
+        } else {
+            last = previousNode;
+        }
+        if (previousNode != null) {
+            previousNode.next = nextNode;
+        } else {
+            first = nextNode;
+        }
+
+        size--;
+        return true;
     }
 
     @Override
@@ -72,6 +98,9 @@ public class CarLinkedList implements CarList {
 
     @Override
     public void clear() {
+        first = null;
+        last = null;
+        size = 0;
     }
 
     private static class Node {

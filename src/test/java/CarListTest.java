@@ -1,84 +1,83 @@
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class CarListTest {
-private CarList carList;
+private CarList carLinkedList;
 
     @Before
     public void setUp() throws Exception {
-        carList = new CarArrayList();
+        carLinkedList = new CarArrayList();
         for (int i= 0; i<100; i++) {
-            carList.add(new Car("Brand"+i,i));
+            carLinkedList.add(new Car("Brand"+i,i));
         }
     }
 
     @Test
     public void whenAdded100ElementsThenSizeMustBe100() {
-         Assert.assertEquals(100, carList.size());
+         Assert.assertEquals(100, carLinkedList.size());
     }
 
     @Test
     public void whenElementRemovedByIndexThenSizeMustBeDecreased() {
-        Assert.assertTrue(carList.removeAt(5)); //возвращает булиан
-        Assert.assertEquals(99, carList.size());
+        Assert.assertTrue(carLinkedList.removeAt(5)); //возвращает булиан
+        Assert.assertEquals(99, carLinkedList.size());
     }
 
     @Test
     public void whenElementRemovedThenSizeMustBeDecreased() {
         Car car = new Car("Toyota",598);
-        carList.add(car);
-        Assert.assertEquals(101, carList.size());
-        carList.remove(car);
-        Assert.assertEquals(100, carList.size());
+        carLinkedList.add(car);
+        Assert.assertEquals(101, carLinkedList.size());
+        carLinkedList.remove(car);
+        Assert.assertEquals(100, carLinkedList.size());
     }
 
     @Test
     public void whenNonExistentElementRemovedThenReturnFalse() {
         Car car = new Car("Toyota",598);
-        Assert.assertFalse(carList.remove(car));
-        Assert.assertEquals(100, carList.size());
+        Assert.assertFalse(carLinkedList.remove(car));
+        Assert.assertEquals(100, carLinkedList.size());
     }
 
     @Test
     public void whenListClearedThenSizeMustBe0 () {
-        carList.clear();
-        Assert.assertEquals(0, carList.size());
+        carLinkedList.clear();
+        Assert.assertEquals(0, carLinkedList.size());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void whenIndexOutOfCollectionBoundsThenThrowException() {
-        carList.removeAt(100);
+        carLinkedList.removeAt(100);
         //последний индекс 99, значит 100 элементов
     }
     @Test
     public void methodGetReturnedRightValue() {
-        Car car = carList.get(4);
+        Car car = carLinkedList.get(4);
         Assert.assertEquals("Brand4", car.getBrand());
     }
 
     @Test
     public void InsertIntoMiddle () {
         Car car = new Car("BMW",1);
-        carList.add(car,50);
-        Car carFromList = carList.get(50);
+        carLinkedList.add(car,50);
+        Car carFromList = carLinkedList.get(50);
         Assert.assertEquals("BMW", carFromList.getBrand());
     }
 
     @Test
     public void InsertIntoLastPosition () {
         Car car = new Car("BMW",1);
-        carList.add(car,100);
-        Car carFromList = carList.get(100);
+        carLinkedList.add(car,100);
+        Car carFromList = carLinkedList.get(100);
         Assert.assertEquals("BMW", carFromList.getBrand());
     }
 
 @Test
 public void InsertIntoFirstPosition () {
         Car car = new Car("BMW",1);
-        carList.add(car,0);
-        Car carFromList = carList.get(0);
+        carLinkedList.add(car,0);
+        Car carFromList = carLinkedList.get(0);
         Assert.assertEquals("BMW", carFromList.getBrand());
         }
 }
