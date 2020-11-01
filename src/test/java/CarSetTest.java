@@ -14,7 +14,6 @@ public class CarSetTest {
         }
     }
 
-
     //не будет добавляться такая же машина, выдаст false и размер останется прежним
     @Test
     public void whenAddCarWontAddTheSame() {
@@ -38,10 +37,14 @@ public class CarSetTest {
         carSet.add(new Car("BMW",10));
         Assert.assertEquals(101,carSet.size());
     }
+
     //размер уменьшится когда уберём машину
     @Test
     public void whenRemoveCarSizeDecreased() {
-        Assert.assertTrue(carSet.remove(new Car("brand",30)));
+        Assert.assertTrue(carSet.remove(new Car("Brand2",2)));
+        Assert.assertEquals(99,carSet.size());
+        Assert.assertFalse(carSet.remove(new Car("Brand2",2))); //пробуем удалить ещё раз
+        //чтобы убедиться, что его там не было
         Assert.assertEquals(99,carSet.size());
     }
 
