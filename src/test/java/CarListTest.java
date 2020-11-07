@@ -5,13 +5,14 @@ import org.junit.Test;
 public class CarListTest {
 private CarList carLinkedList;
 //эти тесты и для linkedlist и для arraylist
+ private CarLinkedList carList;
 
     @Before
     public void setUp() throws Exception {
-        carLinkedList = new CarArrayList();
-        for (int i= 0; i<100; i++) {
-            carLinkedList.add(new Car("Brand"+i,i));
-        }
+       carList = new CarLinkedList();
+       for(int i = 0; i <= 100; i++) {
+           carList.add(new Car("Brand"+i,i));
+       }
     }
 
     @Test

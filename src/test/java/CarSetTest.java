@@ -3,14 +3,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CarSetTest {
+
     private CarSet carSet;
 
     //обязательно инициализируем и заполняем коллекцию перед всеми тестами
     @Before
     public void setUp() throws Exception {
-        //init
+        carSet = new CarHashSet();
         for (int i= 0; i<100; i++) {
-            carSet.add(new Car("Brand"+i,i));
+            carSet.add(new Car("Brand" + i,i));
         }
     }
 
