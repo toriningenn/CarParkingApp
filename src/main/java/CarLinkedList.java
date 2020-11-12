@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class CarLinkedList implements CarList {
 
     private Node first;
@@ -74,6 +76,23 @@ public class CarLinkedList implements CarList {
     }
 
     @Override
+    public Iterator<Car> iterator() {
+        return new Iterator<Car>() {
+            int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return getNode(index).next != null;
+            }
+
+            @Override
+            public Car next() {
+                return getNode(index).value;
+            }
+        };
+    }
+
+    @Override
     public boolean remove(Car car) {
         Node node = first;
         for (int i = 0; i < size; i++) {
@@ -84,6 +103,8 @@ public class CarLinkedList implements CarList {
         }
         return false;
     }
+
+
 
     @Override
     public boolean removeAt(int index) {

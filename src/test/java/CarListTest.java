@@ -28,7 +28,6 @@ private CarList carLinkedList;
         Car newcar = new Car ("BMW",554);
         carLinkedList.add(newcar);
         Assert.assertTrue(carLinkedList.contains(newcar));
-
     }
 
     @Test

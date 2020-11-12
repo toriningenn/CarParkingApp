@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class CarArrayList implements CarList {
     private Car[] array = new Car[10];
@@ -28,7 +29,26 @@ public class CarArrayList implements CarList {
         return true;
     }
 
-        @Override
+    @Override
+    public Iterator<Car> iterator() {
+        return new Iterator <Car> () {
+            int index = 0; //индекс первого 0
+
+            @Override
+            public boolean hasNext() {
+                //элементы есть пока индекс меньше чем размер коллекции
+                return index < size; //возврвщает true пока он меньше
+            }
+
+            @Override
+            public Car next() {
+                return array[index++]; //!!!!возьми array[index] и когда вернется объект увеличь его!!!!!!постинкремент
+                //[++index] – сначала увеличь на 1, потом делай.
+            }
+        };
+    }
+
+    @Override
         public boolean remove (Car car) {
             for (int i = 0; i < size; i++) {
                 if (array[i].equals(car)) {

@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class CarHashSet implements CarSet {
     private static final int INITIAL_CAPACITY =  16; //static final - константа.
     private int size = 0;
@@ -8,11 +10,22 @@ public class CarHashSet implements CarSet {
     @Override
     public boolean contains(Car car) {
         int pos = getElementPosition(car, array.length);
-        if (array[pos] != null) {
-            return true;
-        } else {
+        if (array[pos] == null) {
             return false;
         }
+        Entry entry = array[pos];
+        while(entry != null) {
+            if (entry.value.equals(car)) {
+                return true;
+            } else {
+                entry = entry.next;
+            }
+        } return false;
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return null;
     }
 
     @Override
@@ -118,3 +131,4 @@ public class CarHashSet implements CarSet {
         }
     }
 }
+
