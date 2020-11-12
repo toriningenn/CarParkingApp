@@ -9,8 +9,21 @@ public class CarLinkedList implements CarList {
         return getNode(index).value;
     }
 
+
     @Override
-    public void add(Car car) {
+    public boolean contains(Car car) {
+        Node firstnode = first;
+        while(firstnode != null) {
+            if (firstnode.value.equals(car)) {
+                return true;
+            } else {
+                firstnode = firstnode.next;
+            }
+        } return false;
+    }
+
+    @Override
+    public boolean add(Car car) {
         if (size == 0) {
             Node node = new Node(null, car, null);
             first = node;
@@ -21,17 +34,17 @@ public class CarLinkedList implements CarList {
             secondLast.next = last;
         }
         size++;
+        return true;
     }
 
     @Override
-    public void add(Car car, int index) {
+    public boolean add(Car car, int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         //вставляем в конец
         if (index == size) {
-            add(car);
-            return; //выйти из метода void!!!
+           return add(car);
         }
         //индекс в пределах коллекции, но не самый последний
         //получаем ссылки на соседние элементы
@@ -45,6 +58,7 @@ public class CarLinkedList implements CarList {
             first = newNode;
         }
         size++;
+        return true;
     }
 
     //возвращает нод по индексу

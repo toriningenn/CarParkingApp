@@ -4,6 +4,17 @@ public class CarHashSet implements CarSet {
     private Entry[] array = new Entry[INITIAL_CAPACITY];
     private static final double LOAD_FACTOR = 0.75;
 
+
+    @Override
+    public boolean contains(Car car) {
+        int pos = getElementPosition(car, array.length);
+        if (array[pos] != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public boolean add(Car car) {
         //добавляет в массив машину, увеличивает размер если успешно добавлено. проверяет на забитость

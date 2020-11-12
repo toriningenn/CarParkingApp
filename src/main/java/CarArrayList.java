@@ -11,10 +11,21 @@ public class CarArrayList implements CarList {
     }
 
     @Override
-    public void add(Car car) {
+    public boolean contains(Car car) {
+        for (Car i : array) {
+            if (i.equals(car)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean add(Car car) {
         increaseArray();
         array[size] = car;
         size++;
+        return true;
     }
 
         @Override
@@ -49,13 +60,14 @@ public class CarArrayList implements CarList {
         }
 
     @Override
-    public void add(Car car, int index) {
+    public boolean add(Car car, int index) {
         increaseArray ();
   //checkIndex не подходит, потому что там индекс не может быть больше или равен size, но в этом методе мы можем добавить
         //объект с индексом size.
         System.arraycopy(array, index, array, index + 1, size - index);
         array[index] = car;
         size++;
+        return true;
     }
 
     private void checkIndex (int index) {

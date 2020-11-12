@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class CarSetTest {
 
-    private CarSet carSet;
+    private CarHashSet carSet;
 
     //обязательно инициализируем и заполняем коллекцию перед всеми тестами
     @Before
@@ -21,6 +21,18 @@ public class CarSetTest {
         Assert.assertTrue(carSet.add(new Car("BMW",1)));//убедимся что первая добавлено
         Assert.assertFalse(carSet.add(new Car("BMW",1)));
         Assert.assertEquals(101,carSet.size());
+    }
+    @Test
+    public void containsMethodReturnsTrueIfElementExists () {
+        Car newcar = new Car ("BMW",554);
+        carSet.add(newcar);
+        Assert.assertTrue(carSet.contains(newcar));
+    }
+
+    @Test
+    public void containsMethodReturnsFalseIfElementDoesNotExist () {
+        Car newcar = new Car ("BMW",554);
+        Assert.assertFalse(carSet.contains(newcar));
     }
 
     @Test

@@ -4,14 +4,12 @@ import org.junit.Test;
 
 public class CarListTest {
 private CarList carLinkedList;
-//эти тесты и для linkedlist и для arraylist
- private CarLinkedList carList;
 
     @Before
     public void setUp() throws Exception {
-       carList = new CarLinkedList();
-       for(int i = 0; i <= 100; i++) {
-           carList.add(new Car("Brand"+i,i));
+       carLinkedList = new CarLinkedList();
+       for(int i = 0; i < 100; i++) {
+           carLinkedList.add(new Car("Brand"+i,i));
        }
     }
 
@@ -24,6 +22,19 @@ private CarList carLinkedList;
     public void whenElementRemovedByIndexThenSizeMustBeDecreased() {
         Assert.assertTrue(carLinkedList.removeAt(5)); //возвращает булиан
         Assert.assertEquals(99, carLinkedList.size());
+    }
+    @Test
+    public void containsMethodReturnsTrueIfElementExists () {
+        Car newcar = new Car ("BMW",554);
+        carLinkedList.add(newcar);
+        Assert.assertTrue(carLinkedList.contains(newcar));
+
+    }
+
+    @Test
+    public void containsMethodReturnsFalseIfElementDoesNotExist () {
+        Car newcar = new Car ("BMW",554);
+        Assert.assertFalse(carLinkedList.contains(newcar));
     }
 
     @Test
