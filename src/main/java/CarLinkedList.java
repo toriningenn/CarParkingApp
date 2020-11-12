@@ -82,12 +82,12 @@ public class CarLinkedList implements CarList {
 
             @Override
             public boolean hasNext() {
-                return getNode(index).next != null;
+                return index < size;
             }
 
             @Override
             public Car next() {
-                return getNode(index).value;
+                return getNode(index++).value;
             }
         };
     }
