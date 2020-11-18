@@ -25,8 +25,36 @@ public class CarHashSet implements CarSet {
 
     @Override
     public Iterator<Car> iterator() {
-        return null;
+        return new Iterator<Car>() {
+
+            int index = 0;
+            int arrayIndex = 0;
+            Entry entry;
+
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public Car next() {
+                while (array[arrayIndex] == null) {
+                    arrayIndex++;
+                } //если в ячейке ничего не было, он будет искать ту, в которой что-либо лежит.
+                if (entry == null) {
+                    entry = array[arrayIndex];
+                }
+                Car result = entry.value;
+                entry = entry.next;
+                if (entry == null) {
+                    arrayIndex++;
+                }
+                index++; 
+                return result;
+            }
+        };
     }
+
 
     @Override
     public boolean add(Car car) {

@@ -9,7 +9,7 @@ public class CarCollectionTest {
 
     @Before
     public void setUp() throws Exception {
-        carCollection = new CarLinkedList();
+        carCollection = new CarHashSet();
         for (int i = 0; i<100;i++) {
             carCollection.add(new Car("Brand"+i,i));
         }
